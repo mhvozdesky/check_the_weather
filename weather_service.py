@@ -5,9 +5,6 @@ import ssl
 from urllib.error import URLError
 from json.decoder import JSONDecodeError
 from coordinates import Coordinates
-from typing import NamedTuple
-from datetime import datetime
-from coordinates import CITY
 from exceptions import ApiServiceError, ParseError
 
 Celsius = int
@@ -44,8 +41,3 @@ def get_weather(coordinates: Coordinates) -> dict:
     openweather_response = _get_openweather_response(latitude, longitude, appid)
     weather = _parse_openweather_response(openweather_response)
     return weather
-
-
-if __name__ == '__main__':
-    get_weather(Coordinates(latitude=os.environ.get('LATITUDE'),
-                            longitude=os.environ.get('LONGITUDE')))

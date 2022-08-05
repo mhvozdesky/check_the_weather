@@ -21,15 +21,6 @@ class TestMain(unittest.TestCase):
         self.assertEqual(coordinates.latitude, '40.1')
         self.assertEqual(coordinates.longitude, '30.1')
 
-    # @patch("http.client.HTTPSConnection")
-    # @patch("http.client.HTTPResponse")
-    # def test_get_openweather_response(self, mock_res, mock_conn):
-    #     mock_res.status = 200
-    #     mock_conn.getresponse = MagicMock(return_value=mock_res)
-    #
-    #     a = _get_openweather_response(40.1, 30.2, 'sewww')
-    #     print
-
     @patch('weather_service.urllib.request.urlopen')
     def test_get_openweather_response(self, mock_res):
         mock_res.return_value = io.StringIO()
